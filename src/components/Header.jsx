@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import React, { Component } from "react";
 import { TwitterButton } from 'react-social-buttons'
+import { Menu } from 'semantic-ui-react'
 
 
 export default class Header extends Component {
@@ -11,16 +12,16 @@ export default class Header extends Component {
     render() {
         const { authenticated } = this.props;
         return (
-            <ul className="menu">
-                <li>
+          <Menu>
+                <Menu.Item>
                     <Link to="/">Home</Link>
-                </li>
+                </Menu.Item>
                 {authenticated ? (
-                    <li onClick={this._handleLogoutClick}>Logout</li>
+                    <Menu.Item onClick={this._handleLogoutClick}>Logout</Menu.Item>
                 ) : (
-                        <li onClick={this._handleSignInClick}>Login</li>
-                    )}
-            </ul>
+                        <Menu.Item onClick={this._handleSignInClick}>Login</Menu.Item>
+                )}
+          </Menu>
         );
     }
 
