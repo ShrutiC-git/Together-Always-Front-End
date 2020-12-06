@@ -55,21 +55,21 @@ export default class HomePage extends Component {
         console.log('All the user info we are getting is ', this.state.user)
         return (
             <div>
-                    <Header
-                        authenticated={authenticated}
-                        handleNotAuthenticated={this._handleNotAuthenticated}
-                    />
-                    <div>
-                        {!authenticated ? (
-                            <h1>Welcome!</h1>
-                        ) : (
-                                <div>
-                                    <h1>You have logged-in succcessfully!</h1>
-                                    <h2>Welcome {this.state.user.name}!</h2>
-                                    <button className='button button2' onClick={this.handleCheckFriends}>Check on My Friends</button>
-                                </div>
-                            )}
-                    </div>
+                <Header
+                    authenticated={authenticated}
+                    handleNotAuthenticated={this._handleNotAuthenticated}
+                />
+                <div>
+                    {!authenticated ? (
+                        <h1>Welcome!</h1>
+                    ) : (
+                            <div>
+                                <h1>You have logged-in succcessfully!</h1>
+                                <h2>Welcome {this.state.user.name}!</h2>
+                                <button className='button button2' onClick={this.handleCheckFriends}>Check on My Friends</button>
+                            </div>
+                        )}
+                </div>
             </div>
         );
     }
@@ -79,11 +79,14 @@ export default class HomePage extends Component {
         console.log('The state when not logged in is', this.state)
     };
 
-    handleCheckFriends = () =>{
+    handleCheckFriends = () => {
         fetch("http://localhost:4000/check_friends", {
-            method:'GET',
+            method: 'GET',
             credentials: "include"
         })
+            .then((res) => {
+                console.log(res)
+            })
     }
 }
 
