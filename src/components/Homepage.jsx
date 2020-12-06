@@ -2,7 +2,7 @@ import Header from "./Header";
 import PropTypes from "prop-types";
 import React, { Component } from "react";
 import '../styles/Header.css';
-
+import { Container } from 'semantic-ui-react'
 
 export default class HomePage extends Component {
     static propTypes = {
@@ -60,7 +60,8 @@ export default class HomePage extends Component {
                         handleNotAuthenticated={this._handleNotAuthenticated}
                     />
                     <div>
-                        {!authenticated ? (
+                          <Container>
+                        {!authenticated ? (          
                             <h1>Welcome!</h1>
                         ) : (
                                 <div>
@@ -69,6 +70,7 @@ export default class HomePage extends Component {
                                     <button className='button button2' onClick={this.handleCheckFriends}>Check on My Friends</button>
                                 </div>
                             )}
+                            </Container>
                     </div>
             </div>
         );
@@ -86,4 +88,3 @@ export default class HomePage extends Component {
         })
     }
 }
-
